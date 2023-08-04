@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .container #portfolio-gallery {
+        margin: 0 auto;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: auto auto auto auto;
+      }
+      .portfolio-item {
+        cursor: pointer;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      ul {
+        margin: 0px;
+        padding: 0px;
+      }
+      ul li {
+        display: inline-block;
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+      }
+      ul li img {
+        width: 100%;
+        height: 100%;
+      }
+      #modal {
+        width: 600px;
+        height: auto;
+        border: 1px solid #333;
+        box-sizing: border-box;
+        padding: 5px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #e5e5e5;
+        display: none;
+        padding-bottom: 30px;
+        /*    */
+        display: none;
+      }
+      #modal img {
+        max-width: 90%;
+        height: auto;
+      }
+
+      #all-images .active {
+        filter: blur(5px);
+      }
+      .close-btn-area {
+        width: 100%;
+        text-align: right;
+        margin-bottom: 5px;
+      }
+      .close-btn-area button {
+        cursor: pointer;
+      }
+      .portfolio-item img {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+      }
+      .portfolio-item img:hover {
+        cursor: pointer;
+        animation-name: bounce;
+        -moz-animation-name: bounce;
+      }
+      @keyframes bounce {
+        0%,
+        100%,
+        20%,
+        50%,
+        80% {
+          -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+          transform: translateY(0);
+        }
+        40% {
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+        }
+        60% {
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+        }
+      }
+      @media (max-width: 768px) {
+        .container #portfolio-gallery {
+          gap: 30px;
+          grid-template-columns: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Portfolio Filter -->
+      <div class="filter-section">
+        <button class="filter" data-filter="all">All</button>
+        <button class="filter" data-filter="logos">Logos</button>
+        <button class="filter" data-filter="posters">Posters</button>
+        <button class="filter" data-filter="websites">Websites</button>
+      </div>
+      <!-- Portfolio Gallery -->
+      <div id="portfolio-gallery">
+        <div class="portfolio-item" data-category="logos">
+          <img
+            src="https://fastly.picsum.photos/id/460/1920/1080.jpg?hmac=g_7A_WycVbIkaHsAUDZFy9hY8YuUi8KHKZAeVqnVeO4"
+            alt="logos"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="posters">
+          <img
+            src="https://fastly.picsum.photos/id/971/1920/1080.jpg?hmac=SDH1lXJUqWI8rJ41Yr7PvKW1aAA-nj559Z2DU888BA8"
+            alt="posters"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="websites">
+          <img
+            src="https://fastly.picsum.photos/id/1004/1920/1080.jpg?hmac=bU6kec8gg6XcvAiwA3BVvzY1AqMu9zML0CnbImGc_Oc"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="websites">
+          <img
+            src="https://fastly.picsum.photos/id/469/1920/1080.jpg?hmac=6OpqYIL2RRfcJSg0rA9B-Yvkb6QJxNwqts9wWUnoggQ"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="logos">
+          <img
+            src="https://fastly.picsum.photos/id/907/1920/1080.jpg?hmac=4DYV0PdhxgyxV6qQbwUMKfxG2FommP_71kq5JB6hEw8"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="posters">
+          <img
+            src="https://fastly.picsum.photos/id/1076/1920/1080.jpg?hmac=Cntr-I-SJ6Gj2N8SVkgjUdfTcQw0iwVsJ2vpSDHHOXw"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="logos">
+          <img
+            src="https://fastly.picsum.photos/id/614/1920/1080.jpg?hmac=_utSiKCIaD5XgG0urtkyjqbqm_cEc9OjVPdxhh1_yy4"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="logos">
+          <img
+            src="https://fastly.picsum.photos/id/818/1920/1080.jpg?hmac=Sd3s1DLv9hrxp-JvKpgut3jCqrj1XndPirzXjZDXmqE"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="websites">
+          <img
+            src="https://fastly.picsum.photos/id/575/1920/1080.jpg?hmac=JvtlaCY4cwFBAqhS69s5O-M_ANKhto3peueHVPKimjE"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="posters">
+          <img
+            src="https://fastly.picsum.photos/id/772/1920/1080.jpg?hmac=Wj3iY2DHRWD0MabgiCrSrMJu0iDG3TFk5qUVzYkFfo4"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="websites">
+          <img
+            src="https://fastly.picsum.photos/id/932/1920/1080.jpg?hmac=onZiaiLOjcyJ7j8FVe_kxvk3b-nRgVu9_5zng8hQPQc"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <div class="portfolio-item" data-category="posters">
+          <img
+            src="https://fastly.picsum.photos/id/256/1920/1080.jpg?hmac=X6wr1qt4rhyEeZNuOxEyE8ObJzM6iqGXJFxIVbW43CA"
+            alt="website"
+            class="small-image"
+          />
+        </div>
+        <!-- More portfolio items... -->
+      </div>
+
+      <!-- Modal for full view -->
+      <div id="modal">
+        <div class="close-btn-area">
+          <button id="close-btn">X</button>
+        </div>
+        <div id="image-show-area">
+          <img id="large-image" src="" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $("#close-btn").click(function () {
+        // remove active class from all images
+        $(".small-image").removeClass("active");
+        $("#modal").slideUp();
+      });
+
+      $(".small-image").click(function () {
+        // remove active class from all images
+        $(".small-image").removeClass("active");
+        // add active class
+        $(this).addClass("active");
+        var image_path = $(this).attr("src");
+        $("#modal").fadeOut();
+        // now st this path to our popup image src
+        $("#modal").fadeIn();
+        $("#large-image").attr("src", image_path);
+      });
+    });
+    //draggble images
+    $(".small-image").draggable();
+    //filter js from here
+    $(document).ready(function () {
+      $(".filter-section .filter").on("click", function (event) {
+        event.preventDefault();
+        $("#portfolio-gallery .portfolio-item").hide().addClass("hidden");
+        $filter = $(this).attr("data-filter");
+        if ($filter == "all") {
+          $("#portfolio-gallery .portfolio-item").show().removeClass("hidden");
+        } else {
+          $('div[data-category="' + $filter + '"]')
+            .show()
+            .removeClass("hidden");
+        }
+      });
+    });
+  </script>
+</html>
